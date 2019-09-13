@@ -4,6 +4,8 @@
 
 ### Overview
 
+This program will output the appropriate change to give on a single transaction.s
+
 ### How to Run
 
 ### Technologies/Topics Used
