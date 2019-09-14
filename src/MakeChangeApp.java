@@ -23,7 +23,7 @@ public class MakeChangeApp {
 //		double tax = price * 0.085; // at 8.5% sales tax.
 //		double total = price + tax;
 		DecimalFormat df = new DecimalFormat("#,###.00"); // the #
-//		df.setRoundingMode(RoundingMode.DOWN); // added this to fix my rounding issues on pennies.
+//		df.setRoundingMode(RoundingMode.DOWN); 
 //		System.out.println("Total with tax = $ " + df.format(total)); //
 
 		System.out.print("Enter your payment amount: $ ");
@@ -32,7 +32,9 @@ public class MakeChangeApp {
 		kb.close(); // scanner closed. not more input required.
 
 		if (payment > total) {
+
 			System.out.println("Thank you for your payment!");
+
 		}
 
 		double changeDue = payment - total; // calculates the difference.
@@ -69,13 +71,14 @@ public class MakeChangeApp {
 		int nickels = (int) (change / .05); // $0.05 cents
 		change = change % .05;
 
-		int pennies =  (int) ((change / .01) + 0.00000000000000001); // $0.01 cents 
+		// System.out.println("This is a temporary line to check change " + change);
+		int pennies = (int) ((change / .01) + 0.001); // $0.01 cents
 		change = change % .01;
-		change = change * 100;
-		
+
 		if (totalChangeDue > 0) {
+
 			System.out.println("**********************************************************\n");
-			System.out.println("Total Change: $ " + /*df.format(totalChangeDue) +*/ "\t(" + totalChangeDue + ")");
+			System.out.println("Total Change: $ " + df.format(totalChangeDue) + "\t(" + totalChangeDue + ")");
 			System.out.println();
 			// System.out.println("Give back: " + bill100 + " <--> one hundred dollar
 			// bill(s)\n");
@@ -89,26 +92,33 @@ public class MakeChangeApp {
 			System.out.println("Give back: " + nickels + " <--> nickel(s)\n");
 			System.out.println("Give back: " + pennies + " <--> penny(s)\n");
 			System.out.println("**********************************************************");
-		} else if (totalChangeDue < 0) {
-			double totalRemaining = totalChangeDue;
-			// Math.abs(value) is returning the negative to a positive for my print
-			// statement.
-			System.err.println("ERROR...Not enough money. Please provide remaing change due");
-			System.out.println("**********************************************************\n");
-			System.out.println("Money still owed: $ " + df.format(Math.abs(totalRemaining)) + "\t(" + totalChangeDue + ")");
 			System.out.println();
-			// System.out.println("They owe: " + Math.abs(bill100) + " <--> one hundred
-			// dollar bill(s)\n");
-			System.out.println("They owe: " + Math.abs(bill50) + " <--> fifty dollar bill(s)\n");
-			System.out.println("They owe: " + Math.abs(bill20) + " <--> twenty dollar bill(s)\n");
-			System.out.println("They owe: " + Math.abs(bill10) + " <--> ten dollar bill(s)\n");
-			System.out.println("They owe: " + Math.abs(bill5) + " <--> five dollar bill(s)\n");
-			System.out.println("They owe: " + Math.abs(bill1) + " <--> one dollar bill(s)\n");
-			System.out.println("They owe: " + Math.abs(quarters) + " <--> quarter(s)\n");
-			System.out.println("They owe: " + Math.abs(dimes) + " <--> dime(s)\n");
-			System.out.println("They owe: " + Math.abs(nickels) + " <--> nickel(s)\n");
-			System.out.println("They owe: " + Math.abs(pennies) + " <--> penny(s)\n");
-			System.out.println("**********************************************************");
+
+		} 
+		else if (totalChangeDue < 0) {
+
+			double totalRemaining = totalChangeDue;
+
+			System.err.println("ERROR...Not enough money. Please provide remaing change due");
+			System.out.println();
+			System.out.println("**********************************************************\n");
+			System.out.println("Money still owed: $ " + df.format(Math.abs(totalRemaining)) 
+			/*+ "\t(" + totalChangeDue + ")"*/);
+			// All this below is commented out for now. Having issues with pennies of the negative side.
+			
+//			System.out.println();
+//			// System.out.println("They owe: " + Math.abs(bill100) + " <--> one hundred
+//			// dollar bill(s)\n");
+//			System.out.println("They owe: " + Math.abs(bill50) + " <--> fifty dollar bill(s)\n");
+//			System.out.println("They owe: " + Math.abs(bill20) + " <--> twenty dollar bill(s)\n");
+//			System.out.println("They owe: " + Math.abs(bill10) + " <--> ten dollar bill(s)\n");
+//			System.out.println("They owe: " + Math.abs(bill5) + " <--> five dollar bill(s)\n");
+//			System.out.println("They owe: " + Math.abs(bill1) + " <--> one dollar bill(s)\n");
+//			System.out.println("They owe: " + Math.abs(quarters) + " <--> quarter(s)\n");
+//			System.out.println("They owe: " + Math.abs(dimes) + " <--> dime(s)\n");
+//			System.out.println("They owe: " + Math.abs(nickels) + " <--> nickel(s)\n");
+//			System.out.println("They owe: " + Math.abs(pennies) + " <--> penny(s)\n");
+//			System.out.println("**********************************************************");
 		}
 
 	}
