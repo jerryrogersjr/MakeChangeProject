@@ -10,36 +10,24 @@ public class MakeChangeApp {
 	public static void main(String[] args) {
 		Scanner kb = new Scanner(System.in);
 
-		System.out.println("**********************************************************\n");
-		System.out.println("                         Hello!           \n");
-		System.out.println("              Welcome to \"Java Jerry's\".\n");
-		System.out.println("We don't just sell coffee ;) but lots of ones and zeros!\n");
-		System.out.println("**********************************************************\n");
+		welcome(); // calls the welcome message
 
-		System.out.print("Enter the purchase price: $ ");
+		System.out.print("Enter the purchase price: $ "); // calls for price
 		double price = kb.nextDouble(); // accepts decimal.
 		double total = price;
-		DecimalFormat df = new DecimalFormat("#,###.00"); // the #
+		DecimalFormat df = new DecimalFormat("#,###.00"); // formats my decimal to two places and allows for commas
 
-		System.out.print("Enter your payment amount: $ ");
-		double payment = kb.nextDouble(); // accepts decimal.
+		System.out.print("Enter your payment amount: $ "); // renders payment amount
+		double payment = kb.nextDouble(); 
 		System.out.println();
-		kb.close(); // scanner closed. not more input required.
+		kb.close(); 
 
-		if (payment > total) {
+		double changeDue = payment - total; // calculates difference
+		double change = changeDue * 100; 
 
-			System.out.println("Thank you for your payment!");
+		change = change / 100;
+		change = change % 100;
 
-		}
-
-		double changeDue = payment - total; // calculates the difference.
-		double totalChangeDue = changeDue; // declares the total due.
-		double change = changeDue * 100; //
-
-		change = change / 100; //
-		change = change % 100; //
-
-		
 		int bill50 = (int) (change / 50); // $50 bill
 		change = change % 50;
 
@@ -68,10 +56,10 @@ public class MakeChangeApp {
 		int pennies = (int) ((change / .01) + 0.001); // $0.01 cents
 		change = change % .01;
 
-		if (totalChangeDue > 0) {
-
+		if (changeDue > 0) {
+			System.out.println("Thank you for your payment!");
 			System.out.println("**********************************************************\n");
-			System.out.println("Total Change: $ " + df.format(totalChangeDue));
+			System.out.println("Total Change: $ " + df.format(changeDue));
 			System.out.println();
 			System.out.println("Give back: " + bill50 + " <--> fifty dollar bill(s)\n");
 			System.out.println("Give back: " + bill20 + " <--> twenty dollar bill(s)\n");
@@ -85,18 +73,25 @@ public class MakeChangeApp {
 			System.out.println("**********************************************************");
 			System.out.println();
 
-		} 
-		else if (totalChangeDue < 0) {
-
-			double totalRemaining = totalChangeDue;
-
+		} else if (changeDue == 0) {
+			System.out.println("Exact Payment...No Change Due");
+			System.out.println("Thank you for your payment!");
+		} else if (changeDue < 0) {
+			double totalRemaining = changeDue;
 			System.err.println("ERROR...Not enough money. Please provide remaing change due");
 			System.out.println();
 			System.out.println("**********************************************************\n");
-			System.out.println("Money still owed: $ " + df.format(Math.abs(totalRemaining))); 
-			
+			System.out.println("Money still owed: $ " + df.format(Math.abs(totalRemaining)));
+
 		}
 
 	}
 
+	public static void welcome() {
+		System.out.println("**********************************************************\n");
+		System.out.println("                         Hello!           \n");
+		System.out.println("              Welcome to \"Java Jerry's\".\n");
+		System.out.println("We don't just sell coffee ;) but lots of ones and zeros!\n");
+		System.out.println("**********************************************************\n");
+	}
 }
