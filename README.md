@@ -1,5 +1,5 @@
 ## Make Change Project
-This is first actual project with Skill Distillery. The program will take a
+This is my first end of week project with Skill Distillery. The program will take a
 price to be entered by the user. Then the user will be prompted to enter the
 amount to be tendered.
 
@@ -81,8 +81,10 @@ all of the following test conditions:
 Amount: .67, Tendered: .50, Result: Error message
 Amount: .67, Tendered: 1.00, Result: 1 quarter, 1 nickel, 3 pennies.
 Amount: .59, Tendered: 1.00, Result: 1 quarter, 1 dime, 1 nickel, 1 penny.
-Amount: 3.96, Tendered: 20.00, Result: 1 ten dollar bill, 1 five dollar bill, 1 one dollar bill, 4 pennies.
-Amount: any amount less than 20.00, Tendered: anything greater than amount: correct denominations for correct change.
+Amount: 3.96, Tendered: 20.00, Result: 1 ten dollar bill, 1 five dollar bill,
+1 one dollar bill, 4 pennies.
+Amount: any amount less than 20.00, Tendered: anything greater than amount:
+correct denominations for correct change.
 
 ### How to Run
 
@@ -116,8 +118,8 @@ biggest challenge was working with 'pennies' in this particular case. Originally
 the program had some other features to it. I took them out as they were above
 requirements and kept a copy to build on top of. That being said, with
 the number of pennies to be returned was functioning in a way that would return
-one less penny that amount total. Somewhere in the calculations, it was dropping
-a penny. I seemed to have gotten it working properly but I will need to revisit
-my prior code and this code to compare so I fully understand what's going on here.
-A penny may not be a lot but it adds up and an improper result is not okay...for
-me anyhow :).
+one less penny than amount total. Somewhere in the calculations, it was dropping
+a penny (double casting into int). I seemed to have gotten it working properly
+but I will need to revisit my prior code and this code to compare so I fully
+understand what's going on here. A penny may not be a lot but it adds up and
+an improper result is not worthy! :).
